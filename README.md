@@ -27,13 +27,15 @@ source <(kops completion bash)
 
 
 
-# Create hosted zone
-dev.com
-$ aws s3 mb s3://devyourbucketname.com
+# Create hosted zone on AWS Rout53
+- dev-terraform.com
+Create s3 bucket:  
+$ aws s3 mb s3://dev-terraform.com
 
-#kops create cluster --name=yourbucketname.com --node-size="t2.micro" --master-size="t2.micro" --networking="weave" --topology="private"  --bastion="true" --dns="private" --zones="us-east-2a,us-east-2b,us-east-2c" --state="november-terraform-sstanytska.com" --yes
+#kops create cluster --name=dev-terraform.comm --node-size="t2.micro" --master-size="t2.micro" --networking="weave" --topology="private"  --bastion="true" --dns="private" --zones="us-east-2a,us-east-2b,us-east-2c" --state="dev-terraform.com" --yes
 
-#kops create cluster --name=prod-november-terraform-sstanytska.com --node-size="t2.micro" --master-size="t2.micro" --master-zones="us-east-2a,us-east-2b,us-east-2c" --networking="weave" --topology="private"  --bastion="true" --dns="private" --zones="us-east-2a,us-east-2b,us-east-2c" --state="s3://prod-november-terraform-sstanytska.com" --out=. --target=terraform
+# Create kubernetes.tf file   
+#kops create cluster --name=pdev-terraform.com --node-size="t2.micro" --master-size="t2.micro" --master-zones="us-east-2a,us-east-2b,us-east-2c" --networking="weave" --topology="private"  --bastion="true" --dns="private" --zones="us-east-2a,us-east-2b,us-east-2c" --state="s3://dev-terraform.com" --out=. --target=terraform
 
 
 
@@ -41,7 +43,7 @@ $ aws s3 mb s3://devyourbucketname.com
 Suggestions:  
  * validate cluster: kops validate cluster  
  * list nodes: kubectl get nodes --show-labels  
- * ssh to the bastion: ssh -A -i ~/.ssh/id_rsa admin@bastion.yourbucketname.com   
+ * ssh to the bastion: ssh -A -i ~/.ssh/id_rsa admin@bastion.dev-terraform.com  
  * the admin user is specific to Debian. If not using Debian please use the appropriate user based on your OS.  
  * read about installing addons at: https://github.com/kubernetes/kops/blob/master/docs/addons.md  
  
