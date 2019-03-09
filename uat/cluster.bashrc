@@ -1,0 +1,1 @@
+kops create cluster --name=uat-november-terraform-sstanytska.com --node-size="t2.micro" --master-size="t2.micro" --master-zones="us-east-2a,us-east-2b,us-east-2c" --networking="weave" --topology="private"  --bastion="true" --dns="private" --zones="us-east-2a,us-east-2b,us-east-2c" --state="s3://uat-november-terraform-sstanytska.com" --out=. --target=terraform
